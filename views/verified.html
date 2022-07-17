@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Email Verification</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        color: #000;
+        height: 100vh;
+        display: flex;
+      }
+      div {
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+        width: 50%;
+        align-items: center;
+        padding-bottom: 25px;
+        padding-top: 10px;
+        align-self: center;
+      }
+      
+      h2 {
+        text-align: center;
+        padding: 10px;
+        width: 80%;
+      }
+
+    </style>
+  </head>
+
+  <body></body>
+  <script>
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const error = urlParams.get("error");
+    const message = urlParams.get("message");
+
+    const bodyContent = !error
+      ? `<div>
+      <h2>Thank you for registering. Your account is successfully verified.</h2>
+      <h3>You can now log in</h3>
+
+    </div>`
+      : `<div>
+      <h2>${message}</h2>
+      <h3>Please try again!</h3>
+
+    </div>`;
+
+    document.body.innerHTML = bodyContent;
+  </script>
+</html>
